@@ -1,51 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet"
-        href="https://bootswatch.com/4/flatly/bootstrap.min.css"
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="{{ path('blog')}}">Mon blog symfony</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			{#{{ encore_entry_link_tags('app') }}#}
+		{% endblock %}
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ path('blog')}}">
-                    Articules</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('blog_create')}}">Créer un articule</a>
-               
-                </ul>
-                {% if not app.user %}
-                 <li class="nav-item">
-                    <a  href="{{ path('security_login')}}" class="nav-link">
-                        Connexion
-                    
-                    </a>
-                     </ul>
-                    {% else %}
-                      <li class="nav-item">
-                    <a  href="{{ path('security_logout')}}" class="nav-link">
-                        Déconnexion
-                    
-                    </a>
-                     </ul>
-                     {% endif %}
-               
-            </div>
-        </nav>
-        <div class="container">
-         {% block body %}{% endblock %}
-        </div>
-       
-        {% block javascripts %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{#{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+	</body>
 </html>
